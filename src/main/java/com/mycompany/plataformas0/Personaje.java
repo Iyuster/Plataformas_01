@@ -5,59 +5,55 @@ import javax.swing.ImageIcon;
 import java.awt.event.KeyEvent;
 
 public class Personaje {
-    private int x, y;  // Posición del personaje en la ventana
-    private int dx, dy;  // Movimiento del personaje
-    private Image imagen;  // Imagen del personaje
+    private int x, y;  // Posición del personaje
+    private int dx, dy; // Cambios en la posición
+    private Image imagen; // Imagen del personaje
 
     public Personaje() {
-        // Inicializar la posición del personaje
-        x = 50;
-        y = 50;
+        x = 100; // Posición inicial en X
+        y = 100; // Posición inicial en Y
+        dx = 0; // Velocidad en X
+        dy = 0; // Velocidad en Y
 
         // Cargar la imagen del personaje
-        ImageIcon referencia = new ImageIcon("C:\\Users\\2024-25 DAM1\\Documents\\Iago\\Imagenes\\usuario.png"); // coge la imagen del usuario
+        ImageIcon referencia = new ImageIcon("Imagenes/personaje.png"); // Cambia esto a la ruta correcta
         imagen = referencia.getImage();
     }
 
-    // Obtener la imagen del personaje
-    public Image getImagen() {
-        return imagen;
-    }
-
-    // Obtener la posición en X
-    public int getX() {
-        return x;
-    }
-
-    // Obtener la posición en Y
-    public int getY() {
-        return y;
-    }
-
-    // Mover el personaje
     public void mover() {
-        x += dx;
-        y += dy;
+        x += dx; // Actualiza la posición en X
+        y += dy; // Actualiza la posición en Y
     }
 
-    // Eventos de teclado para mover al personaje
+    public Image getImagen() {
+        return imagen; // Devuelve la imagen del personaje
+    }
+
+    public int getX() {
+        return x; // Devuelve la posición en X
+    }
+
+    public int getY() {
+        return y; // Devuelve la posición en Y
+    }
+
     public void keyPressed(KeyEvent e) {
         int key = e.getKeyCode();
 
         if (key == KeyEvent.VK_LEFT) {
-            dx = -1;
+            dx = -5; // Mover a la izquierda
         }
 
         if (key == KeyEvent.VK_RIGHT) {
-            dx = 1;
+            dx = 5; // Mover a la derecha
         }
 
         if (key == KeyEvent.VK_UP) {
-            dy = -1;
+            dy = -5; // Mover hacia arriba
         }
 
         if (key == KeyEvent.VK_DOWN) {
-            dy = 1;
+            dy = 5; // Mover hacia abajo
         }
     }
 
@@ -65,11 +61,11 @@ public class Personaje {
         int key = e.getKeyCode();
 
         if (key == KeyEvent.VK_LEFT || key == KeyEvent.VK_RIGHT) {
-            dx = 0;
+            dx = 0; // Detener el movimiento horizontal
         }
 
         if (key == KeyEvent.VK_UP || key == KeyEvent.VK_DOWN) {
-            dy = 0;
+            dy = 0; // Detener el movimiento vertical
         }
     }
 }
